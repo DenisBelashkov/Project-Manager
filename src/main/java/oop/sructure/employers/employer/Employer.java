@@ -26,4 +26,6 @@ public interface Employer {
 
     int getWorkTime();
 
+
+
 }

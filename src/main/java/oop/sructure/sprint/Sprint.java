@@ -17,15 +17,38 @@ public class Sprint {
     private List<Task> prodTaskList;
 
     // todo тут, по-хорошему, нужен словарь, но хз, с ним мороки больше
-    private List<Employer> employers;
+    // private List<Employer> employers;
     private int timeDev; //дедлайн?
     private int currentDay = 1;
     private List<Analyst> analysts;
     private List<Developer> developers;
     private List<Tester> testers;
+
     //private Date startDate;
     //private Date finalDate;
+    public Sprint() {
+    }
 
+    public int getCurrentDay() {
+        return currentDay;
+    }
+    public Sprint(String name, int timeDev, int currentDay) {
+        this.name = name;
+        this.timeDev = timeDev;
+        this.currentDay = currentDay;
+
+    }
+    public Sprint(String name, List<Task> openTaskList, List<Task> devTaskList, List<Task> prodTaskList, int timeDev, int currentDay, List<Analyst> analysts, List<Developer> developers, List<Tester> testers) {
+        this.name = name;
+        this.openTaskList = openTaskList;
+        this.devTaskList = devTaskList;
+        this.prodTaskList = prodTaskList;
+        this.timeDev = timeDev;
+        this.currentDay = currentDay;
+        this.analysts = analysts;
+        this.developers = developers;
+        this.testers = testers;
+    }
 
     public Sprint(String name, List<Task> openTaskList, List<Task> devTaskList, List<Task> prodTaskList, int timeDev, List<Analyst> analysts, List<Developer> developers, List<Tester> testers) {
         this.name = name;
@@ -40,7 +63,7 @@ public class Sprint {
 
     private void createTasks(Stack<String> names) {
         for (Analyst analyst : analysts) {
-          //  print(analyst.getWorkTime() + "an");
+            //  print(analyst.getWorkTime() + "an");
             if (analyst.getWorkTime() == 0) {
                 if (!names.empty()) {
                     Task newTask = analyst.generateTask(names);
@@ -56,37 +79,38 @@ public class Sprint {
 
     private void devTasks() {
         Task tempTask;
-       // if (openTaskList != null |)) {
-            //  print("hghghgh");
-            for (Developer developer : developers) {
-                // print(developer.getWorkTime()+"hghghgh");
-                if (developer.getWorkTime() == 0) {
+        // if (openTaskList != null |)) {
+        //  print("hghghgh");
+        for (Developer developer : developers) {
+            // print(developer.getWorkTime()+"hghghgh");
+            if (developer.getWorkTime() == 0) {
                 for (Task task : openTaskList) {
                     //    print(developer.getWorkTime()+"hghghgh");
 
-                        if (task.getAbsDevTime() < currentDay) {
-                            tempTask = task;
-                            tempTask.addAbsDevTime(tempTask.getDevTime());
-                            tempTask.setEmployer(developer);
-                            openTaskList.remove(task);
+                    if (task.getAbsDevTime() <= currentDay) { // так как выводится инфомрация на утро n дня, разработчик модет взять ее этим же утром
+                        tempTask = task;// возможно глобальный косяк
+                        tempTask.setEmployer(developer);
+                        devTaskList.add(developer.completeTask(tempTask));
 
-/*                            if (tempTask != null) {
-                                devTaskList.add(developer.completeTask(tempTask));
-                                print(developer.getWorkTime() + "hghghgh");
-                                break;
-                            }*/
-                        }
+                        //tempTask.addAbsDevTime(tempTask.getDevTime());
+
+                        openTaskList.remove(task);
+
+
+                        print(developer.getWorkTime() + " " + developer.getName());
+                        break;
                     }
                 }
-
-
-                if (developer.getWorkTime() > 0) {
-                    print(developer.getWorkTime() + "dev");
-                    developer.setWorkTime(developer.getWorkTime() - 1); // шибка тут}
-                }
-
             }
-       // }
+
+
+            if (developer.getWorkTime() > 0) {
+                print(developer.getWorkTime() + "dev");
+                developer.setWorkTime(developer.getWorkTime() - 1); // шибка тут}
+            }
+
+        }
+        // }
     }
 
 
@@ -140,9 +164,9 @@ public class Sprint {
                 createTasks(names);
             }
             printSprint(openTaskList, currentDay);
-            if(!openTaskList.isEmpty()) {
-               //  devTasks();
-                 printSprint(devTaskList, currentDay);
+            if (!openTaskList.isEmpty()) {
+                devTasks();
+                printSprint(devTaskList, currentDay);
             }
 
 
@@ -190,13 +214,13 @@ public class Sprint {
         this.prodTaskList = prodTaskList;
     }
 
-    public List<Employer> getEmployers() {
+/*    public List<Employer> getEmployers() {
         return employers;
     }
 
     public void setEmployers(List<Employer> employers) {
         this.employers = employers;
-    }
+    }*/
 
     public int getTimeDev() {
         return timeDev;
@@ -231,4 +255,8 @@ public class Sprint {
     }
 
 
+    @Override
+    public String toString() {
+        return name;
+    }
 }

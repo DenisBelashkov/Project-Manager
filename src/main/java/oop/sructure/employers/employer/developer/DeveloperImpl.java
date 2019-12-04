@@ -34,6 +34,7 @@ public class DeveloperImpl extends EmployerImpl implements Developer {
     @Override
     public Task completeTask(Task task) {
         task.addDevTime((int) Math.ceil(getPerformance()));
+        task.addAbsDevTime((int) Math.ceil(getPerformance()));
         task.setStatus(Status.IN_DEV);
         setWorkTime((int) Math.ceil(getPerformance()));
         return task;
