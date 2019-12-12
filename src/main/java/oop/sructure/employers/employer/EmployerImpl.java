@@ -13,6 +13,9 @@ public class EmployerImpl implements Employer {//empImpl
     public EmployerImpl() {
 
     }
+    public EmployerImpl(String name) {
+        this.name = name;
+    }
 
     public int getWorkTime() {
         return workTime;
@@ -31,9 +34,7 @@ public class EmployerImpl implements Employer {//empImpl
         this.empType = empType;
     }
 
-    public EmployerImpl(String name) {
-        this.name = name;
-    }
+
 
     @Override
     public String getName() {

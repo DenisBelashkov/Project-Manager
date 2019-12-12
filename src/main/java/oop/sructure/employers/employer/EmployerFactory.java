@@ -61,9 +61,9 @@ static {
         rankCreateMap.get(rank).createDecorator(employer);
         return employer;
 
-/*      Employer employer = action.createEmployer(empType, name);
-        action.createDeveloper(employer, devType);
-        action.createRank(employer, rank);
+/*      Employer employer = Create.createEmployer(empType, name);
+        Create.createDeveloper(employer, devType);
+        Create.createRank(employer, rank);
         return employer;*/
     }
 
@@ -73,7 +73,7 @@ static {
         rankCreateMap.get(rank).createDecorator(employer);
         return employer;
     }
-}/*
+
     private static Create action = new Create() { //а где стрелочки юзать?..
 
 
@@ -130,7 +130,7 @@ static {
 
 
     };
-}*/
+}
 
 
 interface CreateEmployer { //todo функшионал интерфйес ДЖошуа Блох!
