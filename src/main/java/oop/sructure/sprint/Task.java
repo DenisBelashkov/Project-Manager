@@ -4,6 +4,8 @@ package oop.sructure.sprint;
 import oop.sructure.employers.employer.Employer;
 import oop.sructure.employers.devTypes.DevType;
 
+import java.util.Random;
+
 public class Task {
     private Sprint sprint; // спринт, к которому относится задача
     private String name; // формат?
@@ -14,11 +16,12 @@ public class Task {
     private int priority; // чем больше, тем приоритетнее. В принципе, имеет смысл отделньым классом, чтобы не было меньше нуля
     private Status status; // в каком состоянии сейчас задача -- только создана, в разработке, завершена
     private int deadline; // время, за которое нужно сделать таск -- определяет аналитик
-    private int progress;
+    private int progress = 0;
 
 
     private Employer employer; // имеет ли смысл делать одну задачу для кучки разработчиков? TODO зменить на дева
-
+    Random random = new Random();
+    int i = random.nextInt((100000)+1000);
 
     public Task(String name, String description, int devTime, DevType devType, int priority, Status status, int deadline, Employer employer) {
         this.name = name;
@@ -29,9 +32,13 @@ public class Task {
         this.status = status;
         this.deadline = deadline;
         this.employer = employer;
+        progress+=devTime;
+
+
     }
 
     public Task(String name, String description, DevType devType, int priority, Status status, int deadline) {
+
         this(name, description, 0, devType, priority, status, deadline, (Employer) null);
     }
 
@@ -56,10 +63,10 @@ public class Task {
 
     public void print() {
         System.out.print("TaskID: " + name);
-        System.out.print(" " + "TaskDevTime: " + devTime);
-        System.out.print(" " + "TaskAbsDevTime: " + absDevTime);
+        System.out.print(" " + "Progress: " + progress);
+        System.out.print(" " + "Deadline: " + deadline);
         System.out.print(" " + status);
-        System.out.println(" " + "Employer: " + employer.getName());
+        System.out.println(" " + "Employer: " + employer.getNameEmployer());
     }
 
     public void addEmployer() {

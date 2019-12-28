@@ -1,6 +1,11 @@
 package oop.sructure.employers.employer;
 
 import oop.sructure.employers.ranks.Rank;
+import oop.sructure.sprint.Sprint;
+import oop.sructure.sprint.Task;
+
+import java.util.List;
+import java.util.Stack;
 
 public interface Employer {
 /*
@@ -9,8 +14,11 @@ public interface Employer {
     int performance;
  */
 
+    void setSprint(Sprint sprint);
 
-    String getName();
+    String getNameEmployer();
+
+    void setNameEmployer(String name);
 
     Rank getRank();
 
@@ -27,5 +35,9 @@ public interface Employer {
     int getWorkTime();
 
 
+    Task generateTask(Stack<String> names);
 
+    Task completeTask(List<Task> openTaskList);
+
+    Task prodTask(List<Task> devTaskList);
 }

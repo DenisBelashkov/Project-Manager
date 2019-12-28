@@ -1,5 +1,6 @@
 package oop.sructure.employers.employer.analyst;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import oop.sructure.sprint.Task;
 import oop.sructure.employers.devTypes.DevType;
 import oop.sructure.sprint.Status;
@@ -9,8 +10,24 @@ import oop.sructure.employers.employer.EmployerImpl;
 import java.util.Random;
 import java.util.Stack;
 
-public class AnalystImpl extends EmployerImpl implements Analyst{
+public class AnalystImpl extends EmployerImpl implements Analyst {
+    @JsonIgnore
+    private Random random = new Random();
+    @JsonIgnore
+    private Stack<String> namesStack;
+/*
+    private int timeWork = (int) (getPerformance() * 1000 * Math.random());
+*/
 
+
+    @JsonIgnore
+
+    private String description = "Сделай или сдохни / do or die / место для вашей рекламы"; // продумать генерацию описания. Массив слов в случайной последовательности?
+    @JsonIgnore
+
+    private DevType devType = DevType.ANDROID; // todo сделать свич с рандомайзом
+    @JsonIgnore
+    private Task task;
 
     public AnalystImpl(String name) {
         super(name);
@@ -19,34 +36,42 @@ public class AnalystImpl extends EmployerImpl implements Analyst{
 
     @Override
     public EmpType getEmpType() {
-        return EmpType.DEVELOPER;
+        return EmpType.ANALYST;
     }
 
 
     @Override
     public Task generateTask(Stack<String> names) {
-
-        Random random = new Random();
-
-        String description = "Сделай или сдохни / do or die / место для вашей рекламы"; // продумать генерацию описания. Массив слов в случайной последовательности?
-
-        int deadline = random.nextInt(10) + 1;
+        this.namesStack = names;
 
 
-        DevType devType = DevType.ANDROID; // todo сделать свич с рандомайзом
+        if (!namesStack.empty()) {
+            run();
+            return task;
+        }
 
-        Task task = new Task(names.pop(), description, 0, devType, 0, Status.OPEN, deadline, this);
-        task.addDevTime((int) Math.ceil(getPerformance()));
-       // task.addAbsDevTime((int) Math.ceil(getPerformance()));
-        setWorkTime((int) Math.ceil(getPerformance()));
-
-
-        return task;
+        return null;
 
     }
 
 
+    @Override
+    public void run() {
+        synchronized (namesStack) {
+            int deadline = (int) (Math.random() * 1000 + 1000);
+            int timeWork = (int) ((int) this.getRank().getPerformance() + Math.random() * 100);
 
+            if (!namesStack.empty())
+                try {
+                    sleep(timeWork);
+                    task = new Task(namesStack.pop(), description, timeWork, devType, 0, Status.OPEN, deadline, this);
+                       task.print();
 
-
+                    /*System.out.println(timeWork + super.getNameEmployer());
+                     */
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+        }
+    }
 }

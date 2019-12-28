@@ -1,14 +1,20 @@
 package oop.sructure.employers.employer;
 
 import oop.sructure.employers.ranks.Rank;
+import oop.sructure.sprint.Sprint;
+import oop.sructure.sprint.Task;
 
-public class EmployerImpl implements Employer {//empImpl
+import java.util.List;
+import java.util.Stack;
 
+public class EmployerImpl extends Thread implements Employer {//empImpl
+//extends Thread
     String name;
     Rank rank;
     double performance; // производительость
     EmpType empType;
     int workTime = 0;
+    Sprint sprint;
 
     public EmployerImpl() {
 
@@ -19,6 +25,21 @@ public class EmployerImpl implements Employer {//empImpl
 
     public int getWorkTime() {
         return workTime;
+    }
+
+    @Override
+    public Task generateTask(Stack<String> names) {
+        return null;
+    }
+
+    @Override
+    public Task completeTask(List<Task> openTaskList) {
+        return null;
+    }
+
+    @Override
+    public Task prodTask(List<Task> devTaskList) {
+        return null;
     }
 
     public void setWorkTime(int workTime) {
@@ -35,13 +56,22 @@ public class EmployerImpl implements Employer {//empImpl
     }
 
 
+    @Override
+    public void setSprint(Sprint sprint) {
+        this.sprint=sprint;
+    }
+
+    public Sprint getSprint() {
+        return sprint;
+    }
 
     @Override
-    public String getName() {
+    public String getNameEmployer() {
         return name;
     }
 
-    public void setName(String name) {
+    @Override
+    public void setNameEmployer(String name) {
         this.name = name;
     }
 

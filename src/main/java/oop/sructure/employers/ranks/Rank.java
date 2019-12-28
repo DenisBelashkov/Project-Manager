@@ -1,9 +1,9 @@
 package oop.sructure.employers.ranks;
 
 public enum Rank {
-    JUNIOR (4) ,
-    MIDDLE (3),
-    SENIOR(2);
+    JUNIOR (400) ,
+    MIDDLE (300),
+    SENIOR(200);
 
     private double performance;
 

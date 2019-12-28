@@ -1,1 +1,213 @@
-{"name":"r","timeDev":10,"currentDay":10}
+{
+  "name": "r",
+  "devTaskList": [],
+  "prodTaskList": [
+    {
+      "name": "1",
+      "description": "Сделай или сдохни / do or die / место для вашей рекламы",
+      "devTime": 88628,
+      "absDevTime": 88629,
+      "devType": "ANDROID",
+      "priority": 0,
+      "status": "OPEN",
+      "deadline": 10,
+      "progress": 0,
+      "employer": {
+        "random": {
+          "seed": 154540824180183,
+          "nextNextGaussian": 0.0,
+          "haveNextNextGaussian": false
+        },
+        "name": "Evgeniy Kravchenko",
+        "rank": "SENIOR",
+        "performance": 2.0,
+        "workTime": 1
+      },
+      "random": {
+        "seed": 132378653113672,
+        "nextNextGaussian": 0.0,
+        "haveNextNextGaussian": false
+      },
+      "i": 69972
+    },
+    {
+      "name": "2",
+      "description": "Сделай или сдохни / do or die / место для вашей рекламы",
+      "devTime": 94262,
+      "absDevTime": 94263,
+      "devType": "ANDROID",
+      "priority": 0,
+      "status": "OPEN",
+      "deadline": 7,
+      "progress": 0,
+      "employer": {
+        "random": {
+          "seed": 205583025948677,
+          "nextNextGaussian": 0.0,
+          "haveNextNextGaussian": false
+        },
+        "name": "Vlad Tulinov",
+        "rank": "JUNIOR",
+        "performance": 4.0,
+        "workTime": 3
+      },
+      "random": {
+        "seed": 251136501991404,
+        "nextNextGaussian": 0.0,
+        "haveNextNextGaussian": false
+      },
+      "i": 49454
+    },
+    {
+      "name": "3",
+      "description": "Сделай или сдохни / do or die / место для вашей рекламы",
+      "devTime": 47931,
+      "absDevTime": 47934,
+      "devType": "ANDROID",
+      "priority": 0,
+      "status": "OPEN",
+      "deadline": 10,
+      "progress": 0,
+      "employer": {
+        "random": {
+          "seed": 154540824180183,
+          "nextNextGaussian": 0.0,
+          "haveNextNextGaussian": false
+        },
+        "name": "Evgeniy Kravchenko",
+        "rank": "SENIOR",
+        "performance": 2.0,
+        "workTime": 1
+      },
+      "random": {
+        "seed": 34207471445096,
+        "nextNextGaussian": 0.0,
+        "haveNextNextGaussian": false
+      },
+      "i": 99295
+    },
+    {
+      "name": "4",
+      "description": "Сделай или сдохни / do or die / место для вашей рекламы",
+      "devTime": 79920,
+      "absDevTime": 79925,
+      "devType": "ANDROID",
+      "priority": 0,
+      "status": "OPEN",
+      "deadline": 6,
+      "progress": 0,
+      "employer": {
+        "random": {
+          "seed": 154540824180183,
+          "nextNextGaussian": 0.0,
+          "haveNextNextGaussian": false
+        },
+        "name": "Evgeniy Kravchenko",
+        "rank": "SENIOR",
+        "performance": 2.0,
+        "workTime": 1
+      },
+      "random": {
+        "seed": 96251395078796,
+        "nextNextGaussian": 0.0,
+        "haveNextNextGaussian": false
+      },
+      "i": 69867
+    },
+    {
+      "name": "5",
+      "description": "Сделай или сдохни / do or die / место для вашей рекламы",
+      "devTime": 45017,
+      "absDevTime": 45022,
+      "devType": "ANDROID",
+      "priority": 0,
+      "status": "OPEN",
+      "deadline": 6,
+      "progress": 0,
+      "employer": {
+        "random": {
+          "seed": 205583025948677,
+          "nextNextGaussian": 0.0,
+          "haveNextNextGaussian": false
+        },
+        "name": "Vlad Tulinov",
+        "rank": "JUNIOR",
+        "performance": 4.0,
+        "workTime": 3
+      },
+      "random": {
+        "seed": 205465995206400,
+        "nextNextGaussian": 0.0,
+        "haveNextNextGaussian": false
+      },
+      "i": 61140
+    }
+  ],
+  "openTaskList": [],
+  "analysts": [
+    {
+      "random": {
+        "seed": 154540824180183,
+        "nextNextGaussian": 0.0,
+        "haveNextNextGaussian": false
+      },
+      "name": "Evgeniy Kravchenko",
+      "rank": "SENIOR",
+      "performance": 2.0,
+      "workTime": 1
+    },
+    {
+      "random": {
+        "seed": 205583025948677,
+        "nextNextGaussian": 0.0,
+        "haveNextNextGaussian": false
+      },
+      "name": "Vlad Tulinov",
+      "rank": "JUNIOR",
+      "performance": 4.0,
+      "workTime": 3
+    }
+  ],
+  "testers": [
+    {
+      "random": {
+        "seed": 213003300263665,
+        "nextNextGaussian": 0.0,
+        "haveNextNextGaussian": false
+      },
+      "name": "Anna Yanshina",
+      "rank": "SENIOR",
+      "performance": 2.0,
+      "workTime": 0
+    },
+    {
+      "random": {
+        "seed": 248951818381281,
+        "nextNextGaussian": 0.0,
+        "haveNextNextGaussian": false
+      },
+      "name": "Vlad Sobolev",
+      "rank": "JUNIOR",
+      "performance": 4.0,
+      "workTime": 0
+    }
+  ],
+  "developers": [
+    {
+      "devType": "ANDROID",
+      "name": "Artem Kondratkov",
+      "rank": "MIDDLE",
+      "performance": 3.0,
+      "workTime": 0
+    },
+    {
+      "devType": "ANDROID",
+      "name": "Denis Belashkov",
+      "rank": "SENIOR",
+      "performance": 2.0,
+      "workTime": 0
+    }
+  ],
+  "timeDev": 10,
+  "currentDay": 10
+}

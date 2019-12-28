@@ -2,6 +2,7 @@ package oop;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
 import oop.sructure.converter.CustomConverter;
 import oop.sructure.employers.devTypes.DevType;
 import oop.sructure.employers.ranks.*;
@@ -17,8 +18,8 @@ import oop.sructure.employers.employer.developer.Developer;
 import oop.sructure.employers.employer.tester.Tester;
 import oop.sructure.utils.Logs;
 
-import java.util.LinkedList;
-import java.util.List;
+import java.sql.Time;
+import java.util.*;
 
 public class Main {
 
@@ -45,7 +46,7 @@ public class Main {
         List<Developer> developers = new LinkedList<>();
         developers.add((Developer) dev1);
         developers.add((Developer) dev2);
-print(((Developer) dev1).getDevType()+"");
+        print(((Developer) dev1).getDevType() + "");
 
         Employer qa1 = EmployerFactory.createEmployer(EmpType.TESTER, "Anna Yanshina", Rank.SENIOR);
         Employer qa2 = EmployerFactory.createEmployer(EmpType.TESTER, "Vlad Sobolev", Rank.JUNIOR);
@@ -57,21 +58,55 @@ print(((Developer) dev1).getDevType()+"");
         List<Task> open = new LinkedList<>();
         List<Task> dev = new LinkedList<>();
         List<Task> prod = new LinkedList<>();
+        List<Employer> employers = new ArrayList<>();
+        employers.addAll(analysts);
+        employers.addAll(testers);
+        employers.addAll(developers);
 
-        Sprint sprint = new Sprint("r", open, dev, prod, 10, analysts, developers, testers);
+      /*  Stack<Task> open = new Stack<>();
+        Stack<Task> dev = new Stack<>();
+        Stack<Task> prod = new Stack<>()*/
+        ;
+        Timer timer = new Timer();
+        //  javax.swing.Timer tim = new javax.swing.Timer(2400,);
+        Sprint sprint = new Sprint("r", open, dev, prod, 4, analysts, developers, testers);
+
         sprint.start(5);
+
+/*
+        javax.swing.Timer tim = new javax.swing.Timer(100, e -> sprint.printSprint(sprint.getDevTaskList()));
+        tim.start();*/
+
+        if (sprint.getOpenTaskList().isEmpty() && sprint.getDevTaskList().isEmpty()) {
+           // System.exit(1);
+/*          GsonBuilder builder = new GsonBuilder();
+            builder.registerTypeAdapter(Sprint.class, new CustomConverter());
+            Gson gson = builder.setPrettyPrinting().create();
+
+            String JSON = gson.toJson(sprint);
+            print(JSON);
+            Logs.createLog(JSON);
+            print(Logs.readLog().toString());*/
+        }
+
+        Random random = new Random();
+
+        //   System.out.println(sprint.getOpenTaskList());
+
+/*
 
         GsonBuilder builder = new GsonBuilder();
         builder.registerTypeAdapter(Sprint.class, new CustomConverter());
-        Gson gson = builder.create();
+        Gson gson = builder.setPrettyPrinting().create();
+*/
 
 
+        //String JSON =gson.toJson(sprint);
+        // print(JSON);
+        /*Employer employer = gson.fromJson(JSON,Employer.class);*/
+        // Logs.createLog(JSON);
+        //    print(Logs.readLog().toString());
 
-        String JSON =gson.toJson(sprint);
-        print(JSON);
-/*Employer employer = gson.fromJson(JSON,Employer.class);*/
-        Logs.createLog(JSON);
-        print(Logs.readLog().toString());
 
     }
 

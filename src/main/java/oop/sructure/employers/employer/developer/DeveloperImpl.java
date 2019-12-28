@@ -7,9 +7,13 @@ import oop.sructure.sprint.Status;
 import oop.sructure.employers.employer.EmpType;
 import oop.sructure.employers.employer.EmployerImpl;
 
+import java.util.List;
+import java.util.Random;
+
 public class DeveloperImpl extends EmployerImpl implements Developer {
 
-
+    private  List<Task> tasks;
+    private Task task;
     private DevType devType;
 
     public DeveloperImpl(String name) {
@@ -32,45 +36,36 @@ public class DeveloperImpl extends EmployerImpl implements Developer {
     }
 
     @Override
-    public Task completeTask(Task task) {
-        task.addDevTime((int) Math.ceil(getPerformance()));
-        task.addAbsDevTime((int) Math.ceil(getPerformance()));
-        task.setStatus(Status.IN_DEV);
-        setWorkTime((int) Math.ceil(getPerformance()));
-        return task;
+    public Task completeTask(List<Task> tasks) {
+        this.tasks = tasks;
+        run();
+        return this.task;
     }
 
-/*
-    public void chooseTask(List<Task> tasks) {
+    @Override
+    public void run() {
+        synchronized (tasks) {
+            int timeWork = (int) ((int) this.getRank().getPerformance() + Math.random() * 100);
+            if (tasks != null & !tasks.isEmpty())
+                try {
 
 
-        //самый опытный выбирает самую приоритетную и OPEN  todo как сделать? Очередь и проверка на open?
+                    sleep(timeWork);
+                    task = tasks.get(0);
+                    tasks.remove(0);
+
+                    if (task != null) {
+                        task.addProgress(timeWork);
+                        task.setStatus(Status.IN_DEV);
+                        task.setEmployer(this);
+                           task.print();
+                        // getSprint().printSprint(getSprint().getDevTaskList());
 
 
-        // разделение задач на блоки (до 8 дней, от 8 до 16, выше 16)
-        Task task = tasks.get(1);
-        // addTask(task);
-        task.setStatus(Status.IN_DEV);
-
-        // todo как реализовать моменты с временем разработки? Дать каждому задаче время на выполнение ( в днях) -- дев просрочил и все грусть печаль?
-        //меняет статус таски на разработку
-        Random random = new Random();
-        int devTime = random.nextInt(10) + 1; // todo sdelat tak, chtoby zaviselo ot yrovnya deva
-        if (devTime < task.getDeadline()) {
-            // спросить, как работать с наследованием
-// salary <<
+                    }
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
         }
-
-        task.setDevTime(devTime);
-        tasks.add(task);
-
-        //возможно просрочивает выполнение задачи и страдает
     }
-
-    */
-
-
-    // какие еще методы?
-
-
 }

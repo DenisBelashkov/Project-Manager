@@ -17,8 +17,8 @@ public abstract class RankDecorator extends EmployerImpl implements Employer {
  }
 
  @Override
- public String getName() {
-  return employer.getName();
+ public String getNameEmployer() {
+  return employer.getNameEmployer();
  }
 
  @Override

@@ -12,7 +12,7 @@ public abstract class DeveloperDecorator extends DeveloperImpl implements Develo
 
 
     public DeveloperDecorator(Developer developer) {
-        super(developer.getName());
+        super(developer.getNameEmployer());
         this.developer = developer;
     }
 
@@ -22,8 +22,8 @@ public abstract class DeveloperDecorator extends DeveloperImpl implements Develo
     }
 
     @Override
-    public String getName() {
-        return developer.getName();
+    public String getNameEmployer() {
+        return developer.getNameEmployer();
     }
 
     @Override

@@ -37,9 +37,12 @@ static {
             CreateDecorator createAndroid = AndroidDeveloper::new;
             CreateDecorator createIOS = IOSDeveloper::new;
             CreateDecorator createBackend = BackendDeveloper::new;
+
+
   /*      CreateDecorator createAndroid = (employer) -> new  AndroidDeveloper((Developer) employer);
         CreateDecorator createIOS = (employer) -> new IOSDeveloper((Developer) employer);
         CreateDecorator createBackend = (employer) -> new BackendDeveloper((Developer) employer);*/
+
             devTypeCreateMap.put(DevType.ANDROID, createAndroid);
             devTypeCreateMap.put(DevType.IOS, createIOS);
             devTypeCreateMap.put(DevType.BACK_END, createBackend);
@@ -112,6 +115,7 @@ static {
 
         @Override
         public EmployerImpl createRank(Employer employer, Rank rank) throws EmpException {
+            employer.setRank(rank);
 
             switch (rank) {
                 case SENIOR:
@@ -130,24 +134,6 @@ static {
 
 
     };
-}
-
-
-interface CreateEmployer { //todo функшионал интерфйес ДЖошуа Блох!
-    // EmployerImpl create();
-
-    EmployerImpl createEmployer(String name) throws EmpException;
-
-
-    // EmployerImpl createRank(Employer employer, Rank rank) throws EmpException;*/
-}
-
-interface CreateDecorator {
-    // EmployerImpl create();
-
-    EmployerImpl createDecorator(Employer employer) throws EmpException;
-
-    // EmployerImpl createRank(Employer employer, Rank rank) throws EmpException;*/
 }
 
 
